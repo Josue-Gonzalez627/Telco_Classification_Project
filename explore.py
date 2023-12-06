@@ -89,6 +89,7 @@ def freq_table(train, cat_var):
 
 #### Bivariate
 
+### 
 def explore_categorical(train, target, cat_var):
     """
     Explore the relationship between a binary target variable and a categorical variable.
@@ -119,6 +120,81 @@ def explore_categorical(train, target, cat_var):
     # Show the plot
     plt.show()
 
+def explore_bivariate_quant(train, target, quant_var):
+    """
+    Explore the relationship between a quantitative variable and a binary target variable.
+
+    Parameters:
+    train (pandas.DataFrame): The training data.
+    target (str): The name of the binary target variable.
+    quant_var (str): The name of the quantitative variable to explore.
+
+    Returns:
+    None
+    """
+
+    # Compare the means of the quantitative variable between the two groups defined by the target variable
+    e.compare_means(train, target, quant_var)
+
+    # Create a boxen plot of the quantitative variable split by the target variable
+    # plt.figure(figsize=(4, 4))
+    e.plot_boxen(train, target, quant_var)
+
+    # Show the plot
+    plt.show()
+    
+def plot_boxen(train, target, quant_var):
+    """
+    Plot a boxen plot of a quantitative variable split by a binary target variable.
+
+    Parameters:
+    train (pandas.DataFrame): The training data.
+    target (str): The name of the binary target variable.
+    quant_var (str): The name of the quantitative variable to plot.
+
+    Returns:
+    None
+    """
+    # Calculate the average value of the quantitative variable
+    average = train[quant_var].mean()
+
+    # Create a boxen plot with the target variable on the x-axis and the quantitative variable on the y-axis
+    # The plot is colored by the target variable and uses the "red" color palette
+    sns.boxenplot(data=train, x=target, y=quant_var, hue=target)
+
+    # Add a title to the plot with the name of the quantitative variable
+    plt.title(quant_var)
+
+    # Add a horizontal line to the plot at the average value of the quantitative variable
+    plt.axhline(average, ls="--")
+    
+    
+def compare_means(train, target, quant_var, alt_hyp="two-sided"):
+    """
+    Compare the means of a quantitative variable between two groups defined by a binary target variable using the Mann-Whitney U test.
+
+    Parameters:
+    train (pandas.DataFrame): The training data.
+    target (str): The name of the binary target variable.
+    quant_var (str): The name of the quantitative variable to compare.
+    alt_hyp (str, optional): The alternative hypothesis for the test. Defaults to 'two-sided'.
+
+    Returns:
+    None
+    """
+    # Select the values of the quantitative variable for each group
+    x = train[train[target] == 1][quant_var]
+    y = train[train[target] == 0][quant_var]
+
+    # Calculate the Mann-Whitney U test statistic and p-value
+    stat, p = stats.mannwhitneyu(x, y, use_continuity=True, alternative=alt_hyp)
+
+    # Print the results of the test
+    print("Mann-Whitney Test:")
+    print(f"Stat = {stat}")
+    print(f"P-Value = {p}")
+###    
+    
 def explore_bivariate_categorical(train, target, cat_var):
     '''
     takes in categorical variable and binary target variable, 
