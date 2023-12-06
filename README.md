@@ -81,8 +81,21 @@ password = 'sample_password'<br>
 def get_db_url(database_name, host_name=host, password=password, username=username):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;return f'mysql+pymysql://{username}:{password}@{host_name}/{database_name}'
 
-# Takeaways and Conclusions
-* 
- 
-# Recommendations
-* 
+# Conclusions
+
+### Takeaways and Key Findings
+
+- Customers without tech support are churning more than those without
+- The influence of fiber optic internet service on churn is surprising given its high speed.
+- Phone Service tends to be independent of churn
+- Churn rates tend to rise with higher monthly charges.
+
+### Recommendations
+
+- Analyze potential problems with fiber optic internet service.
+- Offer tech support for free or cheap if it means retaining customers.
+
+### Next Steps
+
+- Given more time, delve into the reasons behind the high monthly charges contributing to customer churn.
+- Tune the hyperparameters to potentially find a better tuned model
