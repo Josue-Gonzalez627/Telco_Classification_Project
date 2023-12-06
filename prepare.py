@@ -1,7 +1,18 @@
 import pandas as pd
 import numpy as np
+import os
+import warnings
 
+import matplotlib.pyplot as plt
+import env
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+
+plt.style.use(
+    "https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle"
+)
+pd.set_option("display.max_colwidth", 200)
+warnings.filterwarnings("ignore")
 
 def prep_telco(df):
     '''
