@@ -29,28 +29,39 @@ My initial hypothesis is that drivers of churn will likely involve unsatisfied c
        * Are there variations in churn based on monthly charges?
       
 * Develop a Model to predict if a customer will churn or not
-   * Use drivers identified in explore to build predictive models of different types
-   * Evaluate models on train and validate data
-   * Select the best model based on highest accuracy
+   * Use drivers identified in Explore to build predictive models of different types
+   * Evaluate models on the train and validate data
+   * Select the best model based on the highest accuracy
    * Evaluate the best model on test data
  
 * Draw conclusions
  
-# Data Dictionary
+## **Data Dictionary**
 
 | Feature | Definition |
 |:--------|:-----------|
-|Rated| True or False, The game's result is reflected in each player's rating|
-|Winning Pieces| The color of pieces the winning player was moving|
-|White Rating| Rating of the player moving the white pieces using the Glicko-2 rating method for games played on Lichess|
-|Black Rating| Rating of the player moving the white pieces using the Glicko-2 rating method for games played on Lichess|
-|Rating Difference| The difference in rating between the players in the game|
-|Game Rating| The average rating of the two players in the game|
-|Lower Rated White| True or False, The lower rated player is moving the white pieces|
-|Opening Name| The name of the opening played in the game|
-|Time Control Group| The amount of time allotted to each player to make their moves, **Standard** (60 min or more), **Rapid** (30 - 15 min), **Blitz** (5 - 3 min), or **Bullet** (2 or less), **Other** (any other time limit)|
-|Upset (Target)| True or False, The lower rated player won the game|
-|Additional Features|Encoded and values for categorical data and scaled versions continuous data|
+|customer_id|Unique identifier for each customer|
+|gender|The gender of the customer (male,female)|
+|senior_citizen|Indicates whether the customer is a senior citizen|
+|partner|Indicates whether the customer has a partner|
+|dependents|Indicates whether the customer has dependents|
+|tenure|The duration in months that a customer has been with the service provider|
+|phone_service|Indicates whether the customer subscribes to phone service|
+|multiple_lines|Indicates whether the customer has multiple phone lines|
+|internet_service|Indicates whether the customer subscribes to internet service|
+|online_security|Indicates whether the customer has online security features|
+|online_backup|Indicates whether the customer has online backup features|
+|device_protection|Indicates whether the customer has device protection features|
+|tech_support|Indicates whether the customer has technical support services|
+|streaming_tv|Indicates whether the customer subscribes to streaming TV services|
+|streaming_movies|Indicates whether the customer subscribes to streaming movie services|
+|paperless_billing|Indicates whether the customer has opted for paperless billing|
+|monthly_charges|The amount charged to the customer monthly |
+|total_charges|The total charges incurred by the customer|
+|churn|Indicates whether the customer has churned|
+|contract_type|Type of contract subscribed by the customer (month-to-month, one-year, two-year)|
+|internet_service_type|Type of internet service subscribed by the customer (DSL, fiber optic)|
+|payment_type|The method of payment chosen by the customer (bank transfer, credit card, electronic check, mailed check)|
  
 # Steps to Reproduce
 1) Clone this repo.
