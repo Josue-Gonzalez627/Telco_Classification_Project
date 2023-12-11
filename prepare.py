@@ -24,6 +24,7 @@ def prep_telco(df):
     df = df.drop(columns = ['payment_type_id','internet_service_type_id','contract_type_id'])
     df.internet_service_type = df.internet_service_type.fillna('No internet service')
     df.total_charges = df.total_charges.str.replace(' ', '0.0')
+    df['total_charges'] = (df.total_charges + '0').astype(float)
     return df
 
 def splitting_data(df, col, seed=123):
@@ -49,6 +50,8 @@ def splitting_data(df, col, seed=123):
     return train, validate, test
 
 
+
+
 def preprocess_telco(train_df, val_df, test_df):
     '''
     preprocess_telco will take in three pandas dataframes
@@ -60,8 +63,10 @@ def preprocess_telco(train_df, val_df, test_df):
     columns sex and embark_town encoded in the one-hot fashion
     return: (pd.DataFrame, pd.DataFrame, pd.DataFrame)
     '''
+    
+        
     # with a looping structure:
-    # go through the three dfs, set the index to customer id
+    # go through the three dfs, set the index to customer id    
     for df in [train_df, val_df, test_df]:
         df = df.set_index('customer_id')
         df['total_charges'] = df['total_charges'].astype(float)
